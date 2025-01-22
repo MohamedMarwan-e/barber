@@ -16,6 +16,7 @@ dependencies:
   # UI Components and Animations
   cupertino_icons: ^1.0.8                             # iOS Cupertino-style icons
   flutter_svg: ^2.0.10+1                              # Render SVG images
+  lottie: ^3.1.2
   hugeicons: ^0.0.7                                   # Huge Icons package
   flutter_spinkit: ^5.1.0                             # Pre-built loading indicators
   #shimmer: ^3.0.0                                    # Shimmer effect for loading states
