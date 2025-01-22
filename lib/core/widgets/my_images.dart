@@ -44,7 +44,7 @@ class MyImage extends StatelessWidget {
         boxShadow: [
           if (isShadow)
             BoxShadow(
-              color: Colors.black87.withOpacity(0.1),
+              color: Colors.black87.withValues(alpha: 0.1),
               spreadRadius: 1,
               blurRadius: 1,
               offset: const Offset(0, 1), // changes position of shadow

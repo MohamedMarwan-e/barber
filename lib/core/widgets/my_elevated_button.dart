@@ -69,7 +69,7 @@ class MyElevatedButton extends StatelessWidget {
         boxShadow: isShadow ?
         [
           BoxShadow(
-              color: secondaryColor.withOpacity(0.6),
+              color: secondaryColor.withValues(alpha: 0.6),
               offset: const Offset(-2, 2),
               blurRadius: 6,
               spreadRadius: 2
