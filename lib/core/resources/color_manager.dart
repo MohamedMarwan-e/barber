@@ -8,7 +8,7 @@ const Color secondaryColor = Color(0xFF191919);
 /// General Colors
 const Color successGreen = Color(0xFF0CB450);
 const Color warningYellow = Color(0xFFFFC100);
-const Color dangerRed = Color(0xFFFE5960);
+const Color kRed = Color(0xFFDB2524);
 
 const Color kWhite = Colors.white;
 const Color kWhite200 = Color(0xFFCACACA);
@@ -17,6 +17,10 @@ const Color kBlack = Colors.black;
 const Color kHint = Color(0xFF6D6D6D);
 const Color kGery27 = Color(0xFF272727);
 const Color kBorder = Color(0xFFE0E0E0);
+const Color kGery8A = Color(0xFF2b2b2b);
+
+const Color kBabyBlue = Color(0xFF00AEEF);
+
 
 const Color kYellow100 = Color(0xFFFFE59A);
 const Color kYellow50 = Color(0xFFFFFFD5);

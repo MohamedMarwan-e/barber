@@ -37,4 +37,8 @@ class ThemeCubit extends Cubit<ThemeMode> {
     _localStorage.saveThemeMode(mode);
     emit(mode);
   }
+
+  bool get isDark => state == ThemeMode.dark ||
+      (state == ThemeMode.system &&
+          SchedulerBinding.instance.platformDispatcher.platformBrightness == Brightness.dark);
 }

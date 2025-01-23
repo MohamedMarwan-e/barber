@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../core/resources/color_manager.dart';
 
 
-ThemeData appTheme(String usedFontFamily) {
+ThemeData appTheme(String usedFontFamily,{required BuildContext context}) {
   return ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
@@ -34,15 +34,21 @@ ThemeData appTheme(String usedFontFamily) {
       color: kWhite,
       toolbarHeight: 64,
       titleTextStyle: TextStyle(
-        color: graySwatch.shade900,
-        fontSize: 18 ,
-        fontWeight: FontWeight.w600,
+        color: kBlack,
+        fontSize: 16 ,
+        fontWeight: FontWeight.w700,
         fontFamily: usedFontFamily,
       ),
       iconTheme: IconThemeData(
         color: graySwatch.shade600,
         size: 24,
       ),
+    ),
+    drawerTheme: DrawerThemeData(
+      backgroundColor: kWhite,
+      scrimColor: kGery8A.withValues(alpha: 0.54),
+      width: MediaQuery.sizeOf(context).width * 0.6,
+      elevation: 12,
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       elevation: 1,
@@ -110,7 +116,7 @@ ThemeData appTheme(String usedFontFamily) {
   );
 }
 
-ThemeData darkTheme(String usedFontFamily) {
+ThemeData darkTheme(String usedFontFamily,{required BuildContext context}) {
   return ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
@@ -134,20 +140,26 @@ ThemeData darkTheme(String usedFontFamily) {
     ),
     appBarTheme: AppBarTheme(
       surfaceTintColor: kTransparent,
-      centerTitle: true,
+      centerTitle: false,
       elevation: 0,
       color: secondaryColor,
       toolbarHeight: 64,
       titleTextStyle: TextStyle(
         color: kWhite,
-        fontSize: 18 ,
-        fontWeight: FontWeight.w600,
+        fontSize: 16 ,
+        fontWeight: FontWeight.w700,
         fontFamily: usedFontFamily,
       ),
       iconTheme: IconThemeData(
         color: graySwatch.shade300,
         size: 24,
       ),
+    ),
+    drawerTheme: DrawerThemeData(
+      backgroundColor: secondaryColor,
+      scrimColor: kGery8A.withValues(alpha: 0.54),
+      width: MediaQuery.sizeOf(context).width * 0.6,
+      elevation: 12,
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       elevation: 1,

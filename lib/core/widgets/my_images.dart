@@ -16,11 +16,10 @@ class MyImage extends StatelessWidget {
         this.width,
         this.fit = BoxFit.scaleDown,
         this.color,
-        this.isNetwork = true,
         this.shape = false,
         this.radius = 6,
         this.borderRadius,
-        this.isShadow = true,
+        this.isShadow = false,
       });
 
   final String path;
@@ -28,7 +27,7 @@ class MyImage extends StatelessWidget {
   final double? width;
   final BoxFit fit;
   final Color? color;
-  final bool isNetwork;
+
   final bool shape;
   final double radius;
   final BorderRadiusGeometry? borderRadius;
@@ -68,7 +67,7 @@ class MyImage extends StatelessWidget {
             BlendMode.srcIn
         ),
       );
-    } else if (path.startsWith('http') && isNetwork) {
+    } else if (path.startsWith('http')) {
       return shape ?
       CachedNetworkImage(
         imageUrl: path,

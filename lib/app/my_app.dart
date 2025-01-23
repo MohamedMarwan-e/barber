@@ -24,8 +24,8 @@ class MyApp extends StatelessWidget {
                 locale: context.locale,
                 title: appName,
                 debugShowCheckedModeBanner: false,
-                theme: appTheme(cairo),
-                darkTheme: darkTheme(cairo),
+                theme: appTheme(cairo,context: context),
+                darkTheme: darkTheme(cairo,context: context),
                 themeMode: themeMode,
                 routerConfig: Routes.instance.getRoutes(),
                 builder: (context, widget) {
