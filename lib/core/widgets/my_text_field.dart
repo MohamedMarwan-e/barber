@@ -44,6 +44,7 @@ class MyTextField extends StatelessWidget {
     this.isRadius = false,
     this.hintTextSize,
     this.suffix,
+    this.prefix,
     this.inputTextColor,
     this.inputTextSize,
     this.suffixText,
@@ -91,6 +92,7 @@ class MyTextField extends StatelessWidget {
   final int? maxLength;
   final int? errorMaxLines;
   final Widget? suffix;
+  final Widget? prefix;
   final Color? inputTextColor;
   final double? inputTextSize;
   final String? suffixText;
@@ -106,7 +108,7 @@ class MyTextField extends StatelessWidget {
       width: width ?? MediaQuery.sizeOf(context).width,
       decoration: BoxDecoration(
         borderRadius: isRadius ?
-        BorderRadius.circular(enabledBorderRadius ?? 8) :
+        BorderRadius.circular(enabledBorderRadius ?? 16) :
         BorderRadius.zero
       ),
       child: TextFormField(
@@ -114,7 +116,7 @@ class MyTextField extends StatelessWidget {
         controller: controller,
         enableSuggestions: true,
         style: inputTextStyle ?? theme.displaySmall?.copyWith(
-          fontSize: inputTextSize ?? 16,
+          fontSize: inputTextSize ?? 14,
           color: inputTextColor ?? graySwatch.shade900,
         ),
         cursorColor: cursorColor ?? primaryColor,
@@ -149,9 +151,10 @@ class MyTextField extends StatelessWidget {
               ),
           fillColor: fillColorTextFiled ?? kWhite,
           filled: filledColorTextFiled  ?? true,
+          prefix: prefix,
           prefixIcon: prefixIconWidget,
           prefixIconConstraints: const BoxConstraints(
-            minWidth: 40, maxWidth: 40, maxHeight: 50,
+            minWidth: 40, maxWidth: 120, maxHeight: 50,
           ),
           suffixIcon: suffixIconWidget,
           suffix:suffix ,
@@ -164,30 +167,30 @@ class MyTextField extends StatelessWidget {
           enabledBorder: borderFromBottom ?
           UnderlineInputBorder(
               borderSide: BorderSide(
-                  color: enabledBorderColor ?? graySwatch.shade300,
+                  color: enabledBorderColor ?? Color(0xFFD9D9D9),
                   width: widthBorder ?? 2
               ),
           ):
           OutlineInputBorder(
             borderSide: BorderSide(
-                color: enabledBorderColor ?? graySwatch.shade300,
-                width: widthBorder ?? 1.6
+                color: enabledBorderColor ?? Color(0xFFD9D9D9),
+                width: widthBorder ?? 1
             ),
-            borderRadius: BorderRadius.circular(enabledBorderRadius ?? 8),
+            borderRadius: BorderRadius.circular(enabledBorderRadius ?? 16),
           ),
 
           focusedBorder: borderFromBottom ?
           UnderlineInputBorder(
             borderSide: BorderSide(
-                color: enabledBorderColor ?? graySwatch.shade300,
+                color: enabledBorderColor ?? Color(0xFFD9D9D9),
                 width: widthBorder ?? 2
             ),
           ):
           OutlineInputBorder(
-              borderRadius: BorderRadius.circular(focusedBorderRadius ?? 8),
+              borderRadius: BorderRadius.circular(focusedBorderRadius ?? 16),
               borderSide: BorderSide(
                   color: focusedBorderColor ?? primaryColor.withValues(alpha: 0.7),
-                  width: widthBorder ?? 1.6
+                  width: widthBorder ?? 1
               )
           ),
 
@@ -200,7 +203,7 @@ class MyTextField extends StatelessWidget {
           ):
           OutlineInputBorder(
               borderSide: const BorderSide(color: kRed150, width: 2),
-              borderRadius: BorderRadius.circular(errorBorderRadius ?? 8)
+              borderRadius: BorderRadius.circular(errorBorderRadius ?? 16)
           ),
 
           focusedErrorBorder: borderFromBottom ?
@@ -211,7 +214,7 @@ class MyTextField extends StatelessWidget {
             ),
           ) :
           OutlineInputBorder(
-              borderRadius: BorderRadius.circular(focusedErrorBorderRadius??8),
+              borderRadius: BorderRadius.circular(focusedErrorBorderRadius??16),
               borderSide: const BorderSide(color: kRed150, width: 2)
           ),
 

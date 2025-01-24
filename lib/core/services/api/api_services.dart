@@ -7,12 +7,13 @@ import '../hive.dart';
 
 
 const String applicationJson = 'application/json';
+const String apiKey = '11223344';
 
 class ApiServices {
   ApiServices._internal()
       : _dio = Dio(
     BaseOptions(
-      baseUrl: 'http://api.alquran.cloud/v1/quran/',
+      baseUrl: 'https://gold-hamster-143901.hostingersite.com/api/',
       connectTimeout: const Duration(milliseconds: 8000),
       receiveTimeout: const Duration(milliseconds: 8000),
       sendTimeout: const Duration(milliseconds: 8000),
@@ -23,8 +24,6 @@ class ApiServices {
       InterceptorsWrapper(
         onRequest: (RequestOptions options, RequestInterceptorHandler handler) async {
           AppLogs().debugLog('API Request to: ${options.baseUrl}${options.path}');
-          AppLogs().debugLog('Request Method: ${options.method}');
-          AppLogs().debugLog('Request Headers: ${options.headers}');
           AppLogs().debugLog('Request Data: ${options.data}');
           AppLogs().debugLog('Request Query Parameters: ${options.queryParameters}');
 
@@ -41,6 +40,7 @@ class ApiServices {
             AppLogs().debugLog('Accept-Language Header Set: $currentLang');
           }
           options.headers['Accept'] = applicationJson;
+          options.headers['api-key'] = apiKey;
 
           handler.next(options);
         },

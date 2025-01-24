@@ -17,6 +17,7 @@ class SvgAssets {
   static const String language = '$svgPath/language.svg';
   static const String darkLanguage = '$svgPath/dark_language.svg';
   static const String logOut = '$svgPath/log_out.svg';
+  static const String saudi = '$svgPath/saudi.svg';
 
 }
 

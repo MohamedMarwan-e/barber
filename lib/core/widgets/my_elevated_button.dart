@@ -59,9 +59,9 @@ class MyElevatedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final borderRadius = this.borderRadius ?? BorderRadius.circular(12);
+    final borderRadius = this.borderRadius ?? BorderRadius.circular(16);
     return Container(
-      width: width,
+      width: width ?? MediaQuery.sizeOf(context).width,
       height: height,
       margin: margin ?? EdgeInsets.zero,
       decoration: BoxDecoration(
@@ -69,17 +69,17 @@ class MyElevatedButton extends StatelessWidget {
         boxShadow: isShadow ?
         [
           BoxShadow(
-              color: secondaryColor.withValues(alpha: 0.6),
-              offset: const Offset(-2, 2),
-              blurRadius: 6,
-              spreadRadius: 2
+              color: Color(0xFF58264A).withValues(alpha: 0.1),
+              offset: const Offset(0, 4),
+              blurRadius: 4,
+              spreadRadius: 0
           ),
         ]:[],
       ),
       child: ElevatedButton(
         onPressed: disableOnPressed! ? null: onPressed ??(){},
         style: styleStyle?? ElevatedButton.styleFrom(
-            backgroundColor: backgroundColor?? kTransparent,
+            backgroundColor: backgroundColor?? primaryColor,
             surfaceTintColor: surfaceTintColor?? kTransparent,
             shadowColor: shadowColor?? kTransparent,
             foregroundColor: foregroundColor ?? primaryColor,

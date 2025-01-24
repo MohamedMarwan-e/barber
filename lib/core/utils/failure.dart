@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 
 class Failure {
@@ -9,7 +11,7 @@ class Failure {
 
   final String message;
   final int? statusCode;
-  final String? details;
+  final dynamic details; // Can now store a map or string
 
   @override
   String toString() {
@@ -17,32 +19,34 @@ class Failure {
   }
 
   static Failure fromDioError(DioException e) {
+    dynamic parsedDetails = _parseDetails(e.response?.data);
+
     switch (e.type) {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.receiveTimeout:
       case DioExceptionType.sendTimeout:
         return Failure(
           message: 'Request timed out. Please try again.',
-          details: e.message,
+          details: parsedDetails,
         );
 
       case DioExceptionType.badResponse:
         return Failure(
           message: _getErrorMessage(e.response?.statusCode),
           statusCode: e.response?.statusCode,
-          details: e.response?.data?.toString(),
+          details: parsedDetails,
         );
 
       case DioExceptionType.cancel:
         return Failure(
           message: 'Request was cancelled.',
-          details: e.message,
+          details: parsedDetails,
         );
 
       default:
         return Failure(
           message: 'An unexpected error occurred.',
-          details: e.message,
+          details: parsedDetails,
         );
     }
   }
@@ -79,12 +83,35 @@ class Failure {
         return 'Access denied.';
       case 404:
         return 'Resource not found.';
+      case 405:
+        return 'Method not allowed.';
+      case 408:
+        return 'Request timeout. Please try again later.';
+      case 429:
+        return 'Too many requests. Please try again later.';
       case 500:
         return 'Internal server error. Please try again later.';
+      case 502:
+        return 'Bad gateway. Please try again later.';
       case 503:
         return 'Service unavailable. Please try again later.';
+      case 504:
+        return 'Gateway timeout. Please try again later.';
       default:
         return 'Error: $statusCode. Please try again.';
     }
+  }
+
+
+  static dynamic _parseDetails(dynamic data) {
+    if (data is String) {
+      try {
+        return jsonDecode(data);
+      } catch (e) {
+
+        return data;
+      }
+    }
+    return data;
   }
 }

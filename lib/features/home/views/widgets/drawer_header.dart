@@ -12,7 +12,7 @@ class DrawerHeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.sizeOf(context).height * 0.33,
+      height: MediaQuery.sizeOf(context).height * 0.35,
       width: MediaQuery.sizeOf(context).width * 0.6,
       child: DrawerHeader(
 
@@ -21,9 +21,9 @@ class DrawerHeaderWidget extends StatelessWidget {
             children: [
               MyImage(
                 SvgAssets.user,
-                height: 100,width: 100,
+                height: 98,width: 98,
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 12),
               Text('فهد المولد',
                   style: Theme.of(context).textTheme.displayMedium?.copyWith(
                     color: di<ThemeCubit>().isDark ?

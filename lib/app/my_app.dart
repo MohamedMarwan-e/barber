@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
                 darkTheme: darkTheme(cairo,context: context),
                 themeMode: themeMode,
                 routerConfig: Routes.instance.getRoutes(),
+
                 builder: (context, widget) {
                   return MediaQuery(
                     data: MediaQuery.of(context).copyWith(

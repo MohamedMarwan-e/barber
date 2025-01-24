@@ -38,6 +38,19 @@ class HiveLocalStorage {
     await box.clear();
   }
 
+  Future<void> delete(dynamic key) async {
+    if (box.containsKey(key)) {
+      await box.delete(key);
+    }
+  }
+
+  bool containsKey(dynamic key) {
+    return box.containsKey(key);
+  }
+
+  bool hasToken() {
+    return box.containsKey(apiToken) && box.get(apiToken) != null;
+  }
 
   Future<void> saveThemeMode(ThemeMode mode) async {
     await box.put('themeMode', mode.toStorageString());
