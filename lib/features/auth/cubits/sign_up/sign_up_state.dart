@@ -30,3 +30,9 @@ final class SignUpLoading extends SignUpState {}
 final class SignUpSuccess extends SignUpState {}
 
 final class SignUpError extends SignUpState {}
+
+final class SignOutLoading extends SignUpState {}
+
+final class SignOutSuccess extends SignUpState {}
+
+final class SignOutError extends SignUpState {}

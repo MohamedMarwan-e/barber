@@ -84,13 +84,13 @@ class _SignUpViewState extends State<SignUpView> {
                     ),
                   ),
                 ),
-                SliverToBoxAdapter(child: SizedBox(height: 24)),
-                SliverPadding(
-                  padding: EdgeInsets.only(bottom: 24),
-                  sliver: SliverFillRemaining(
-                    hasScrollBody: false,
-                    child: Align(
-                      alignment: Alignment.bottomCenter,
+
+                SliverFillRemaining(
+                  hasScrollBody: false,
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 28.0),
                       child: SizedBox(
                         height: 48,
                         child: MyElevatedButton(
@@ -105,7 +105,7 @@ class _SignUpViewState extends State<SignUpView> {
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),

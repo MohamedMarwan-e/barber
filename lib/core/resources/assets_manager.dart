@@ -4,7 +4,8 @@ const String jsonPath = 'assets/json';
 
 class ImageAssets {
   static const String logo = '$imagePath/logo.png';
-
+  static const String salon = '$imagePath/salon.png';
+  static const String salonBackground = '$imagePath/salon_background.png';
 
 }
 
@@ -18,6 +19,9 @@ class SvgAssets {
   static const String darkLanguage = '$svgPath/dark_language.svg';
   static const String logOut = '$svgPath/log_out.svg';
   static const String saudi = '$svgPath/saudi.svg';
+  static const String barber = '$svgPath/barber.svg';
+  static const String clock = '$svgPath/clock.svg';
+  static const String share = '$svgPath/share.svg';
 
 }
 

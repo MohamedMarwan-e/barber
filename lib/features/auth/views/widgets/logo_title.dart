@@ -14,22 +14,23 @@ class LogoViewTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = di<ThemeCubit>().isDark;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        MyImage(
-          SvgAssets.logo,
-          height: 60 ,width: 180,
-          color: isDark ? kWhite : null,
-        ),
-        SizedBox(height: 20),
-        Text(title,
-          style: Theme.of(context).textTheme.displayLarge?.copyWith(
-              fontSize: 24
+    return Center(
+      child: Column(
+        children: [
+          MyImage(
+            SvgAssets.logo,
+            height: 60 ,width: 180,
+            color: isDark ? kWhite : null,
           ),
-        ),
-        SizedBox(height: 48),
-      ],
+          SizedBox(height: 20),
+          Text(title,
+            style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                fontSize: 24
+            ),
+          ),
+          SizedBox(height: 48),
+        ],
+      ),
     );
   }
 }

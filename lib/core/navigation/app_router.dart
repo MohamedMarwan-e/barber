@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../../features/auth/views/login_view.dart';
 import '../../features/auth/views/otp_view.dart';
 import '../../features/home/views/home_view.dart';
+import '../../features/salon_service/views/salon_service_view.dart';
 import '../constants.dart';
 import '../services/hive.dart';
 import 'route_observer.dart';
@@ -14,6 +15,7 @@ const String homeView = '/home';
 const String loginView = '/login';
 const String otpView = '/otp';
 const String signUpView = '/signUp';
+const String salonServiceView = '/salonService';
 
 
 
@@ -63,28 +65,13 @@ class AppRouter {
             return SignUpView();
           },
         ),
-        // GoRoute(
-        //   path: subjectsView,
-        //   name: subjectsView,
-        //   builder: (context, state) {
-        //     final data = state.extra! as Map<String, dynamic>;
-        //     return  SubjectsView(
-        //       title: data['title'],
-        //       subjects: data['subjects'],
-        //
-        //     );
-        //   },
-        // ),
-
-        // GoRoute(
-        //   path: upholsteryProductsView,
-        //   name: upholsteryProductsView,
-        //   builder: (context, state) {
-        //     //final UpholsterSubCategory value = state.extra as UpholsterSubCategory;
-        //     return UpholsteryProductsView(
-        //         id: state.uri.queryParameters['id'] ?? '');
-        //   },
-        // ),
+        GoRoute(
+          path: salonServiceView,
+          name: salonServiceView,
+          builder: (context, state) {
+            return SalonServiceView(id: state.uri.queryParameters['id'] ?? '');
+          },
+        ),
 
       ],
 
@@ -101,42 +88,3 @@ class AppRouter {
     );
   }
 }
-
-
-// class DynamicCodec extends Codec<Object?, Object?> {
-//   const DynamicCodec();
-//
-//   @override
-//   Converter<Object?, Object?> get decoder => const DynamicDecoder();
-//
-//   @override
-//   Converter<Object?, Object?> get encoder => const DynamicEncoder();
-// }
-//
-// class DynamicDecoder extends Converter<Object?, Object?> {
-//   const DynamicDecoder();
-//
-//   @override
-//   Object? convert(Object? input) {
-//     if (input == null) return null;
-//     if (input is String) {
-//       return jsonDecode(input) as Map<String, dynamic>; // Decode JSON string into a Map
-//     }
-//     throw FormatException('Unable to decode input: $input');
-//   }
-// }
-//
-// class DynamicEncoder extends Converter<Object?, Object?> {
-//   const DynamicEncoder();
-//
-//   @override
-//   Object? convert(Object? input) {
-//     if (input == null) return null;
-//     // Encode any object into a JSON string
-//     try {
-//       return jsonEncode(input);
-//     } catch (e) {
-//       throw FormatException('Cannot encode type ${input.runtimeType}');
-//     }
-//   }
-// }

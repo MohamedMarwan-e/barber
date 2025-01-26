@@ -32,7 +32,21 @@ class UserModel {
     );
   }
 
-  static Map<String, dynamic> toJson({
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'phone': phone,
+      'avatar': avatar,
+      'email': email,
+      'gender': gender,
+      'city_id': cityId,
+      'city_name': cityName,
+    };
+  }
+
+
+  static Map<String, dynamic> toSignUpJson({
     required String name,
     required int cityId,
     required String gender,

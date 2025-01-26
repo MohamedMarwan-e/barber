@@ -37,7 +37,7 @@ class _DrawerWidget extends StatelessWidget {
           ),
           SizedBox(height: 16),
           DropDownButton(
-            title: 'Theme',
+            title: 'theme',
             image: isDarkTheme ? SvgAssets.darkMode: SvgAssets.mode,
             imageSize: 24.0,
             valueToShow: getThemeName(currentThemeMode),
@@ -55,20 +55,31 @@ class _DrawerWidget extends StatelessWidget {
             },
           ),
           Spacer(),
-          TextButton(
-              onPressed: () {},
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  MyImage(SvgAssets.logOut),
-                  SizedBox(width: 12),
-                  Text("تسجيل الخروج",
-                      style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                         color: kRed
-                      )
-                  ),
-                ],
-              )
+          
+          BlocBuilder(
+            bloc: di<SignUpCubit>(),
+            builder: (context, state) {
+                return state is SignOutLoading ?
+                SpinKitPulsingGrid(
+                  color: primaryColor,
+                  size: 24,
+                ):
+                TextButton(
+                    onPressed: () => di<SignUpCubit>().signOut(context: context),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        MyImage(SvgAssets.logOut),
+                        SizedBox(width: 12),
+                        Text(context.tr('signOut'),
+                            style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                                color: kRed
+                            )
+                        ),
+                      ],
+                    )
+                );
+              },
           ),
           SizedBox(height: 40),
         ],

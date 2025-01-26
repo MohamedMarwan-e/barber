@@ -1,3 +1,5 @@
+import 'package:barber/core/constants.dart';
+import 'package:barber/core/extensions/cache_user_model.dart';
 import 'package:barber/core/navigation/app_router.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
@@ -81,7 +83,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   Future<void> signUP({required BuildContext context}) async {
     emit(SignUpLoading());
     final result = await _authRepo.postSignUP(
-      userData: UserModel.toJson(
+      userData: UserModel.toSignUpJson(
         name: nameController.text,
         cityId: selectedCity!['id'],
         gender: gender ??'',
@@ -102,11 +104,44 @@ class SignUpCubit extends Cubit<SignUpState> {
         fontSize: 14,
       );
       emit(SignUpError());
-    }, (res) {
+    }, (res) async {
       userModel = res;
+      await _hiveLocalStorage.saveUserModel(res);
       _hiveLocalStorage.delete('firstLogin');
-      context.goNamed(homeView);
+      if(context.mounted){
+        context.goNamed(homeView);
+      }
+
       emit(SignUpSuccess());
+    });
+  }
+
+  Future<void> signOut({required BuildContext context}) async{
+    emit(SignOutLoading());
+    final result = await _authRepo.getSignOut();
+
+    result.fold((failureAndState) {
+      final failure = failureAndState.$1;
+      final state = failureAndState.$2;
+
+      Fluttertoast.showToast(
+        msg: "${failure.details} \nState: $state",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: kRed,
+        textColor: kWhite,
+        fontSize: 14,
+      );
+      emit(SignOutError());
+    }, (res) async {
+      _hiveLocalStorage.delete(apiToken);
+      _hiveLocalStorage.delete('userModel');
+      _hiveLocalStorage.delete('firstLogin');
+      if(context.mounted){
+        context.goNamed(loginView);
+      }
+
+      emit(SignOutSuccess());
     });
   }
 }

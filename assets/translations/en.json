@@ -1,3 +1,6 @@
 {
-  "lang": "Language"
+  "lang": "Language",
+  "theme": "Theme",
+  "signOut": "Sign Out",
+  "salons": "Barber salons"
 }

@@ -78,4 +78,23 @@ class AuthRepoImpl implements AuthRepo {
       return Left((failure, errorMessage));
     }
   }
+
+  @override
+  Future<Either<(Failure, String), String>> getSignOut() async{
+    try{
+      final response = await apiServices.get(
+          endPoint: signOutEndP,
+      );
+      return Right(response['message']);
+
+    }catch(e){
+
+      final failure = Failure.handleError(e);
+      String errorMessage = 'An error occurred.';
+      if (failure.details is Map && failure.details['message'] is String) {
+        errorMessage = failure.details['message']!;
+      }
+      return Left((failure, errorMessage));
+    }
+  }
 }
