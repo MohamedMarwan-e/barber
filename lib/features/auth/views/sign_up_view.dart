@@ -84,7 +84,7 @@ class _SignUpViewState extends State<SignUpView> {
                     ),
                   ),
                 ),
-
+                SliverToBoxAdapter(child: SizedBox(height: 24)),
                 SliverFillRemaining(
                   hasScrollBody: false,
                   child: Align(

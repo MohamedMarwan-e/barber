@@ -58,7 +58,7 @@ class _Body extends StatelessWidget {
                       children: [
                         MyImage(
                           ImageAssets.salon,
-                          width: 120,height: 100,
+                          width: 100,height: 100,
                           radius: 16,
                           fit: BoxFit.fill,
                         ),
@@ -79,7 +79,7 @@ class _Body extends StatelessWidget {
                               ),
                             ),
                             SizedBox(
-                              width: MediaQuery.sizeOf(context).width - 194,
+                              width: MediaQuery.sizeOf(context).width - 180,
                               child: Row(
                                 children: [
                                   Text(

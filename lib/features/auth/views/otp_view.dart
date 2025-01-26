@@ -65,14 +65,14 @@ class _OtpViewState extends State<OtpView> {
                   children: [
                     Text('أكتب كود التحقق المرسل الى',
                         style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          color: Color(0xFF191919),
+                          color: isDark ?kWhite:Color(0xFF191919),
                         )
                     ),
                     Text('+966${widget.phone}',
                         textDirection: TextDirection.ltr,
                         style: Theme.of(context).textTheme.labelSmall?.copyWith(
                           fontWeight: FontWeight.w700,
-                          color: kBlack
+                          color: isDark ?kWhite: kBlack
                         )
                     ),
                     InkWell(
